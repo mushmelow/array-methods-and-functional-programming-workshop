@@ -22,6 +22,9 @@ function forEach(callback, theArray) {
 
 
 function map(mappingFunction, theArray) {
+  
+  // using mappingFunction (*2) all element in the array
+  
   var mapping=[];
   
   theArray.forEach(function(el){
@@ -33,15 +36,63 @@ function map(mappingFunction, theArray) {
 }
 
 function filter(predicate, theArray) {
+  var oddNum=[];
+  
+  theArray.forEach(function(el){
+    
+    if(predicate(el) ) {
+      
+      oddNum.push(el);
+    }
+   
+    
+    console.log("returning num is:", oddNum);
+    
+  });
+  
+  return oddNum;
 
 }
 
 function every(predicate, theArray) {
+  
+  //for each cannot be break
+  //the for loop can be break anytime with a return false with no variable
+  
+    if(theArray.length===0){
+      return true;
+    }
+    else{
+      
+      for(var i=0; i<theArray.length;i++){
+        
+        if(!predicate(theArray[i])){
+          return false;
+        }
+      }
+      return true;
+    }
 
 }
+ 
+  
+  
+
 
 function some(predicate, theArray) {
-
+  
+  if(theArray.length===0){
+    return false
+  }
+  else{  
+    
+    for(var i=0; i<theArray.length;i++){
+      if(predicate(theArray[i])){
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 function indexOf(item, theArray) {
