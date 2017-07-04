@@ -8,10 +8,28 @@ function forEach(callback, theArray) {
     ...
   }
   */
+  
+  for (var i = 0 ; i <theArray.length; i++) {
+    
+  callback(theArray[i]);
+  // console.log("the index",i)
+  }
+ 
+ 
+  
 }
 
-function map(mappingFunction, theArray) {
 
+
+function map(mappingFunction, theArray) {
+  var mapping=[];
+  
+  theArray.forEach(function(el){
+    
+    mapping.push(mappingFunction(el));
+    // console.log("the mapping is:",mapping);
+  });
+  return mapping;
 }
 
 function filter(predicate, theArray) {
