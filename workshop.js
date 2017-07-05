@@ -75,14 +75,11 @@ function every(predicate, theArray) {
 
 }
  
-  
-  
-
 
 function some(predicate, theArray) {
   
   if(theArray.length===0){
-    return false
+    return false;
   }
   else{  
     
@@ -96,19 +93,77 @@ function some(predicate, theArray) {
 }
 
 function indexOf(item, theArray) {
-
+  
+  
+  
+  for(var i=0;i<theArray.length;i++){
+    
+    if(theArray[i]===item){
+      console.log(theArray[i]);
+      return i;
+    }
+  }
+  console.log("-1");
+  return -1;
 }
 
 function findIndex(predicate, theArray) {
-
+  
+  for(var i=0; i<theArray.length; i++){
+    
+    if(predicate(theArray[i])){
+      
+      return i;
+    }
+    
+  }
+  return -1;
 }
 
 function first(n, theArray) {
+  // arguments.length will return de number of argument that the function first has.
+  if(arguments.length===1){
+    return n[0];
+  }
+  else if(n>theArray.length){
+    return theArray;
+    
+      
+  }
+  else if(n<0){
+    return [];
+    
+  }
+  else{
+    var tab=[];
+    for(var i=0; i<n;i++){
+      tab.push(theArray[i]);
+    }
+    return tab;
+  }
 
 }
 
 function last(n, theArray) {
-
+  if(arguments.length===1){
+    return n[n.length-1];
+  }  
+    
+  else if(n>theArray.length){
+    return theArray;
+  
+  }
+  else if(n<0){
+    return [];
+    
+  }
+  else{
+    var tab=[];
+   for(var i=0; i<n;i++){
+      tab.push(theArray[theArray.length-1-i]);
+    }
+    return tab.reverse();
+  }
 }
 
 function pluck(property, arrayOfObjects) {
@@ -120,6 +175,12 @@ function flatten(theArray) {
 }
 
 function negate1(predicate) {
+  
+ return function whatever(param){
+      return !predicate(param);
+      
+ };
+  
 
 }
 
