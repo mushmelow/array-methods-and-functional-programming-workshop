@@ -167,10 +167,18 @@ function last(n, theArray) {
 }
 
 function pluck(property, arrayOfObjects) {
-
+  var tab=[];
+  arrayOfObjects.forEach(function(element) {
+    tab.push(element[property]);
+    
+});
+   return tab;
 }
 
 function flatten(theArray) {
+  return theArray.reduce(function (flat, toFlatten) {
+    return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+  }, []); 
 
 }
 
@@ -185,14 +193,33 @@ function negate1(predicate) {
 }
 
 function negate2(predicate) {
-
+   return function whatever(){
+      return !predicate.apply(this, arguments);
+    };
 }
 
 function compose1(fun1, fun2) {
+      
+  return function whatever(param){
+    var result=fun2(param);
+    return fun1(result);
+    
+  }
 
 }
 
 function compose2(arrOfFuncs) {
+   
+   
+   return function whatever(param){
+        var result= param;
+   
+     for(var i=arrOfFuncs.length - 1; i >= 0; i--){
+       result= arrOfFuncs[i](result);
+     }
+     
+     return result;
+   }
 
 }
 
